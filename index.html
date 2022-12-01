@@ -1,0 +1,281 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <title>SpOT: Spatiotemporal Modeling for 3D Object Tracking</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Davis Rempe">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="style_project_page.css?cache=7733391418498779679">
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide/dist/css/glide.core.min.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://unpkg.com/@glidejs/glide"></script>
+        <style type="text/css">
+            .side-text {
+                width:60%;
+                display:inline-block;
+                vertical-align:top;
+            }
+            .side-image {
+                width: 38%;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .controls {
+                margin-bottom: 10px;
+            }
+            .left-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 80%;
+            }
+            .right-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 19%;
+                text-align: right;
+            }
+            .render_window {
+                display: inline-block;
+                vertical-align: middle;
+                box-shadow: 1px 0px 5px black;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                width: calc(33% - 10px);
+            }
+            .progress {
+                background: #666;
+                position: relative;
+                height: 5px;
+                margin-bottom: -5px;
+                display: none;
+            }
+            .glide__slide:hover {cursor: grab;}
+            .glide__slide:active {cursor: grabbing;}
+            .glide__slide img {width: 90%;}
+            .glide__bullets {
+                text-align: center;
+            }
+            .glide__bullet--active {
+                color: #aaa; 
+            }
+
+            @media (max-width: 400px) {
+                .render_window {
+                    display: block;
+                    width: 90%;
+                    margin: 10px auto;
+                }
+            }
+            @media (max-width: 700px) {
+                .side-image {
+                    display: block;
+                    width: 80%;
+                    margin: 10px auto;
+                }
+                .side-text {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="section">
+            <h1 class="project-title">
+                SpOT: Spatiotemporal Modeling for 3D Object Tracking
+            </h1>
+            <div class="authors">
+                <a href=https://coltonstearns.github.io>
+                    Colton Stearns<sup>1</sup>
+                </a>
+                <a href=https://davrempe.github.io>
+                    Davis Rempe<sup>1</sup>
+                </a>
+                <a href=https://www.tri.global/about-us/dr-jie-li>
+                    Jie Li<sup>2</sup>
+                </a>
+                <a href=https://www.tri.global/about-us/dr-rares-ambrus>
+                    Rares Ambrus<sup>2</sup>
+                </a>
+                <!-- <br> -->
+                <a href=https://zakharos.github.io/>
+                    Sergey Zakharov<sup>2</sup>
+                </a>
+                <a href=>
+                    Vitor Guizilini<sup>2</sup>
+                </a>
+                <a href=https://yanchaoyang.github.io/>
+                    Yanchao Yang<sup>1</sup>
+                </a>
+                <a href=https://geometry.stanford.edu/member/guibas>
+                    Leonidas J. Guibas<sup>1</sup>
+                </a>
+            </div>
+
+            <div class="affiliations">
+                <span><sup>1</sup> Stanford University</span>&emsp;
+                <span><sup>2</sup> Toyota Research Institute</span>&emsp;
+            </div>
+
+            <div class="project-conference">
+                European Conference on Computer Vision (ECCV) 2022 (<b>Oral Presentation</b>)
+            </div>
+
+            <div class="project-icons">
+                <a href="docs/spot.pdf">
+                    <i class="fa fa-file"></i> <br/>
+                    Paper
+                </a>
+<!--                <a href="supp.html">-->
+<!--                    <i class="fa fa-youtube-play"></i> <br/>-->
+<!--                    Supplementary-->
+<!--                </a>-->
+                <a href="docs/spot-supp.pdf">
+                    <i class="fa fa-file"></i> <br/>
+                    Supplementary
+                </a>
+                <a href="https://github.com/coltonstearns/SpOT">
+                    <i class="fa fa-github"></i> <br/>
+                    Code
+                </a>
+            </div>
+
+            <div class="section-title">Video</div>
+            <div class="teaser-image">
+                <center>
+                <iframe width="850" height="478" src="https://www.youtube.com/embed/J6P3cq21OCA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </center>
+            </div>
+            <div class="section-title">Abstract</div>
+            <div class="content">
+                <p>
+                3D multi-object tracking aims to uniquely and consistently
+                identify all mobile entities through time. Despite the rich spatiotemporal information available in this setting, current 3D tracking methods primarily rely on abstracted information and limited history, e.g.
+                single-frame object bounding boxes. In this work, we develop a holistic
+                representation of traffic scenes that leverages both spatial and temporal information of the actors in the scene. Specifically, we reformulate
+                tracking as a spatiotemporal problem by representing tracked objects as
+                sequences of time-stamped points and bounding boxes over a long temporal history. At each timestamp, we improve the location and motion
+                estimates of our tracked objects through learned refinement over the
+                full sequence of object history. By considering time and space jointly,
+                our representation naturally encodes fundamental physical priors such
+                as object permanence and consistency across time. Our spatiotemporal
+                tracking framework achieves state-of-the-art performance on the Waymo
+                and nuScenes benchmarks.
+                </p>
+            </div>
+
+            <div class="section-title">Method Overview</div>
+            <div class="content">
+                <p>
+                    The core concept behind SpOT is to learn object-level motion and geometry from a large set of real-world object
+                    sequences. We generate hundreds of thousands of training sequences from the nuScenes and Waymo Open datasets.
+                    <center>
+                    <figure style="width: 90%;">
+                        <video class="centered" width="100%" controls muted loop autoplay>
+                            <source src="vid/training-sequences.mp4" type="video/mp4"/>
+                        </video>
+                    </figure>
+                    <br></br>
+                    <br></br>
+                    </center>
+
+                    In order to efficiently and robustly understand object-level motion, SpOT trains a sequence-to-sequence
+                    refinement network on per-class training sequences.
+                    <img src="img/ssr-arch.png" style="width:80%;">
+                    <center><p class="caption">
+                    The sequence-to-sequence refinement network learns to predict a refined state trajectory and velocities
+                        to be used for subsequent tracking associations.
+                    </p></center>
+                    <br></br>
+
+
+                    After implicitly learning object geometry and motion via its sequence-to-sequence refinement network,
+                    SpOT iteratively integrates sequence refinements into an online tracking-by-detection framework.
+                    <br></br>
+                    <img src="img/tracking-arch.png" style="width:100%;">
+                    <center><p class="caption">Our optimization procedure leverages HuMoR to recover plausible motions from many
+                                            modalities even under noise and occlusions.
+                    </p></center>
+                    <br></br>
+                </p>
+            </div>
+
+            <div class="section-title">Qualitative Tracking Results</div>
+            <div class="content">
+                In contrast to previous method <a href=https://arxiv.org/abs/2006.11275> CenterPoint</a>,
+                SpOT efficiently stores and reasons over large object history during <b>online</b> tracking.
+                In addition to quantitative improvements reported in the main <a href="docs/spot.pdf">paper</a>,
+                SpOT provides clear qualitative improvements. Below we show these improvements on the Waymo Open Dataset.
+                <br><br>
+
+                <center><p>Pedestrians</p></center>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="vid/waymo_pedestrian_baseline_1.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">CenterPoint
+                    </p></center>
+                </figure>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="vid/waymo_pedestrian_1.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">SpOT
+                    </p></center>
+                </figure>
+
+                <br><br>
+                <br><br>
+
+                <center><p>Vehicles</p></center>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="vid/waymo_vehicle_baseline_1.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">CenterPoint</p></center>
+                </figure>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="vid/waymo_vehicle_1.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">SpOT</p></center>
+                </figure>
+
+            </div>
+
+            <div class="section-title">Acknowledgments</div>
+            <div class="content">
+            This work was supported by grants from the Toyota Research Institute (TRI) University 2.0 program, a Vannevar Bush Faculty Fellowship, and a gift from the Amazon Research Awards program. Toyota Research
+            Institute (“TRI”) provided funds to assist the authors with their research but
+            this article solely reflects the opinions and conclusions of its authors and not
+            TRI or any other Toyota entity.
+                <br><br>
+                This project page template is based on <a href="https://github.com/paschalidoud/paschalidoud.github.io/blob/master/neural_parts.html">this page</a>.
+            </div>
+
+            <div class="section-title">Citation</div>
+            <div class="section bibtex">
+            <pre>
+            @inproceedings{stearns2022spot,
+                author={Stearns, Colton and Rempe, Davis and Li, Jie and Ambres, Rares and Zakharov, Sergey and Guizilini, Vitor and Yang, Yanchao and Guibas, Leonidas J.},
+                title={SpOT: Spatiotemporal Modeling for 3D Object Tracking},
+                booktitle={European Conference on Computer Vision (ECCV)},
+                year={2022}
+            }
+            </pre>
+            </div>
+            <br>
+            <div class="section-title">Contact</div>
+            <div class="content">
+                For any questions, please contact Colton Stearns <a href="mailto:coltongs@stanford.edu">coltongs@stanford.edu</a>.
+            </div>
+        </div>        
+    
+    </body>
+</html>
