@@ -195,12 +195,13 @@
                     <br></br>
 
 
-                    After implicitly learning object geometry and motion via its sequence-to-sequence refinement network,
+                    After implicitly learning object geometry and motion via its sequence-to-sequence refinement network (SSR),
                     SpOT iteratively integrates sequence refinements into an online tracking-by-detection framework.
                     <br></br>
                     <img src="img/tracking-arch.png" style="width:100%;">
-                    <center><p class="caption">Our optimization procedure leverages HuMoR to recover plausible motions from many
-                                            modalities even under noise and occlusions.
+                    <center><p class="caption">Our tracking-by-detection framework includes a velocity forecast, L2
+                        object-center association, and a standard life cycle manager. We autoregressively apply the SSR module
+                        at the end of each tracking step.
                     </p></center>
                     <br></br>
                 </p>
@@ -211,7 +212,7 @@
                 In contrast to previous method <a href=https://arxiv.org/abs/2006.11275> CenterPoint</a>,
                 SpOT efficiently stores and reasons over large object history during <b>online</b> tracking.
                 In addition to quantitative improvements reported in the main <a href="docs/spot.pdf">paper</a>,
-                SpOT provides clear qualitative improvements. Below we show these improvements on the Waymo Open Dataset.
+                SpOT provides clear qualitative improvements. Below we show qualitative improvements on the Waymo Open Dataset.
                 <br><br>
 
                 <center><p>Pedestrians</p></center>
@@ -262,12 +263,7 @@
             <div class="section-title">Citation</div>
             <div class="section bibtex">
             <pre>
-            @inproceedings{stearns2022spot,
-                author={Stearns, Colton and Rempe, Davis and Li, Jie and Ambres, Rares and Zakharov, Sergey and Guizilini, Vitor and Yang, Yanchao and Guibas, Leonidas J.},
-                title={SpOT: Spatiotemporal Modeling for 3D Object Tracking},
-                booktitle={European Conference on Computer Vision (ECCV)},
-                year={2022}
-            }
+            @inproceedings{stearns2022spot, author={Stearns, Colton and Rempe, Davis and Li, Jie and Ambres, Rares and Zakharov, Sergey and Guizilini, Vitor and Yang, Yanchao and Guibas, Leonidas J.}, title={SpOT: Spatiotemporal Modeling for 3D Object Tracking}, booktitle={European Conference on Computer Vision (ECCV)}, year={2022}}
             </pre>
             </div>
             <br>
